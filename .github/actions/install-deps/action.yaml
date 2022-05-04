@@ -8,6 +8,7 @@ runs:
       shell: bash
       run: ./.github/scripts/setup-system.sh
     - name: Install everything and it's dog
+      if: matrix.platform == 'ubuntu-latest'
       shell: bash
       # Taken from: https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
       run: |
