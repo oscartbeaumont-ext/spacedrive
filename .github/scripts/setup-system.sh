@@ -8,11 +8,11 @@ if [ $? -eq 1 ]; then
         exit 1
 fi
 
-which pnpm &> /dev/null
-if [ $? -eq 1 ]; then
-        echo "PNPM was not detected on your system. Ensure the 'pnpm' command is in your \$PATH. You are **not** able to use Yarn or NPM."
-        exit 1
-fi
+# which pnpm &> /dev/null
+# if [ $? -eq 1 ]; then
+#         echo "PNPM was not detected on your system. Ensure the 'pnpm' command is in your \$PATH. You are **not** able to use Yarn or NPM."
+#         exit 1
+# fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         if (( $EUID != 0 )); then
