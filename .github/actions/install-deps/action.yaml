@@ -4,9 +4,58 @@ runs:
   using: "composite"
   steps:  
     - name: Install ffmpeg & tauri deps (Ubuntu)
-      if: matrix.platform == 'ubuntu-latest' || matrix.platform == 'macos-latest'
+      if: matrix.platform == 'ubuntu-latest' # TODO: || matrix.platform == 'macos-latest'
       shell: bash
       run: ./.github/scripts/setup-system.sh
+    - name: Install everything and it's dog
+      shell: bash
+      # Taken from: https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
+      run: |
+        sudo apt-get update -qq && sudo apt-get -y install \
+          autoconf \
+          automake \
+          build-essential \
+          cmake \
+          git-core \
+          libass-dev \
+          libfreetype6-dev \
+          libgnutls28-dev \
+          libmp3lame-dev \
+          libsdl2-dev \
+          libtool \
+          libva-dev \
+          libvdpau-dev \
+          libvorbis-dev \
+          libxcb1-dev \
+          libxcb-shm0-dev \
+          libxcb-xfixes0-dev \
+          meson \
+          ninja-build \
+          pkg-config \
+          texinfo \
+          wget \
+          yasm \
+          zlib1g-dev
+
+
+    - name: Update Homebrew
+      if: matrix.platform == 'macos-latest'
+      run: |
+        brew update --preinstall
+        cat "$(brew --repository)/Library/Taps/homebrew/homebrew-core/Formula/ffmpeg.rb" > .github/brew-formulae
+    - name: Configure Homebrew cache
+      if: matrix.platform == 'macos-latest'
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/Library/Caches/Homebrew/ffmpeg--*
+          ~/Library/Caches/Homebrew/downloads/*--ffmpeg-*
+        key: brew-${{ hashFiles('.github/brew-formulae') }}
+        restore-keys: brew-
+    - name: Install Homebrew dependencies
+      if: matrix.platform == 'macos-latest'
+      run: |
+        env HOMEBREW_NO_AUTO_UPDATE=1 brew install ffmpeg
 
     - name: Install vcpkg & ffmpeg (Windows)
       if: matrix.platform == 'windows-latest'
