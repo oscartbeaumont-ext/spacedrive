@@ -2,6 +2,8 @@
 
 echo "Setting up your system for Spacedrive development!"
 
+if 
+
 which cargo &> /dev/null
 if [ $? -eq 1 ]; then
         echo "Rust was not detected on your system. Ensure the 'rustc' and 'cargo' binaries are in your \$PATH."
@@ -52,5 +54,4 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 else
         echo "Your OS '$OSTYPE' is not supported by this script. We would welcome a PR or some help adding your OS to this script. https://github.com/spacedriveapp/spacedrive/issues"
         exit 1
-
 fi

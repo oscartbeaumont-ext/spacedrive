@@ -120,6 +120,9 @@ jobs:
       #       ${{ matrix.platform }}-stable-
       #       ${{ matrix.platform }}-
 
+      - name: Let's fetch
+        run: cargo fetch
+
       # TODO: Why are all monorepo dependencies being pulled just to run the CLI???
       - name: Generate Prisma client
         working-directory: core
