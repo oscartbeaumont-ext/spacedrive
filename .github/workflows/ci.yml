@@ -14,8 +14,8 @@ on:
 # Speedy caching
 
 env:
-  RUST_LOG: info
-  CARGO_INCREMENTAL: 0
+  RUST_LOG=cargo::ops::cargo_rustc::fingerprint=info
+  # CARGO_INCREMENTAL: 0
 
 jobs:
   build-core:
