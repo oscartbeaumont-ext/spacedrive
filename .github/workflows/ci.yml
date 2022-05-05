@@ -122,19 +122,19 @@ jobs:
 
       - name: Generate Prisma client
         working-directory: core
-        run: cargo run -p prisma-cli --release -- generate
+        run: cargo run --locked -p prisma-cli --release -- generate
 
       - name: Build Core
-        run: cargo build -p sdcore --release
+        run: cargo build --locked -p sdcore --release
       
       - name: Build Core (v2)
-        run: cargo build -p sdcore --release
+        run: cargo build --locked -p sdcore --release
       
       - name: Build Server
-        run: cargo build -p server --release
+        run: cargo build --locked -p server --release
       
       - name: Build Server (v2)
-        run: cargo build -p server --release
+        run: cargo build --locked -p server --release
       
       - name: Build Core (v3)
-        run: cargo build -p sdcore --release
+        run: cargo build --locked -p sdcore --release
