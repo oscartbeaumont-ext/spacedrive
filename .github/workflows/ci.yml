@@ -31,40 +31,40 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install stuff
-        run: ./.github/scripts/setup-system.sh
+        run: sudo ./.github/scripts/setup-system.sh
       
-      - name: Install everything and it's dog
-        if: matrix.platform == 'ubuntu-latest'
-        shell: bash
-        # Taken from: https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get -y install \
-            autoconf \
-            automake \
-            build-essential \
-            cmake \
-            git-core \
-            libass-dev \
-            libfreetype6-dev \
-            libgnutls28-dev \
-            libmp3lame-dev \
-            libsdl2-dev \
-            libtool \
-            libva-dev \
-            libvdpau-dev \
-            libvorbis-dev \
-            libxcb1-dev \
-            libxcb-shm0-dev \
-            libxcb-xfixes0-dev \
-            meson \
-            ninja-build \
-            pkg-config \
-            texinfo \
-            wget \
-            yasm \
-            zlib1g-dev
-          sudo apt-get install -y libavdevice-dev libavfilter-dev libavformat-dev libavcodec-dev libavutil-dev
+      # - name: Install everything and it's dog
+      #   if: matrix.platform == 'ubuntu-latest'
+      #   shell: bash
+      #   # Taken from: https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
+      #   run: |
+      #     sudo apt-get update -qq
+      #     sudo apt-get -y install \
+      #       autoconf \
+      #       automake \
+      #       build-essential \
+      #       cmake \
+      #       git-core \
+      #       libass-dev \
+      #       libfreetype6-dev \
+      #       libgnutls28-dev \
+      #       libmp3lame-dev \
+      #       libsdl2-dev \
+      #       libtool \
+      #       libva-dev \
+      #       libvdpau-dev \
+      #       libvorbis-dev \
+      #       libxcb1-dev \
+      #       libxcb-shm0-dev \
+      #       libxcb-xfixes0-dev \
+      #       meson \
+      #       ninja-build \
+      #       pkg-config \
+      #       texinfo \
+      #       wget \
+      #       yasm \
+      #       zlib1g-dev
+      #     sudo apt-get install -y libavdevice-dev libavfilter-dev libavformat-dev libavcodec-dev libavutil-dev
       
       # - name: Cache cargo state
       #   uses: actions/cache@v2

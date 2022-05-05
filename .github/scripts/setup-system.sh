@@ -17,7 +17,7 @@ fi
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         if (( $EUID != 0 )); then
                 echo "This script must be run as root!"
-                exit
+                exit 1
         fi
 
         if which apt-get &> /dev/null; then
