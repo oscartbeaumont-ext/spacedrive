@@ -10,9 +10,11 @@ on:
       - '**/.md'
   workflow_dispatch:
 
-# Run clippy and add to PR's
 # Run tests (doc and normal) and show result in PR's
 # Speedy caching
+
+env:
+  RUST_LOG: info
 
 jobs:
   build-core:
