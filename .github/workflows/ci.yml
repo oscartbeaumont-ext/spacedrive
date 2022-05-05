@@ -15,7 +15,7 @@ on:
 
 env:
   RUST_LOG: cargo::ops::cargo_rustc::fingerprint=info
-  CARGO_INCREMENTAL: 0
+  CARGO_INCREMENTAL: 1
 
 jobs:
   build-core:
