@@ -15,7 +15,7 @@ on:
 
 env:
   RUST_LOG: info
-  CARGO_INCREMENTAL: 1
+  CARGO_INCREMENTAL: 0
 
 jobs:
   build-core:
