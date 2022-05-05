@@ -2,8 +2,6 @@
 
 echo "Setting up your system for Spacedrive development!"
 
-if 
-
 which cargo &> /dev/null
 if [ $? -eq 1 ]; then
         echo "Rust was not detected on your system. Ensure the 'rustc' and 'cargo' binaries are in your \$PATH."
