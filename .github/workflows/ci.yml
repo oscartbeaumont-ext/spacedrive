@@ -29,6 +29,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Install stuff
+        run: ./.github/scripts/setup-system.sh
       
       - name: Cache cargo state
         uses: actions/cache@v2
