@@ -119,7 +119,11 @@ jobs:
             ${{ matrix.platform }}-stable-${{ env.cache-name }}-
             ${{ matrix.platform }}-stable-
             ${{ matrix.platform }}-
-      
+
+      - name: Generate Prisma client
+        working-directory: core
+        run: cargo run -p prisma-cli --release -- generate
+
       - name: Build Core
         run: cargo build -p sdcore --release
       
