@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install stuff
-        run: sudo ./.github/scripts/setup-system.sh
+        run: su runner -c ./.github/scripts/setup-system.sh
       
       # - name: Install everything and it's dog
       #   if: matrix.platform == 'ubuntu-latest'
@@ -120,6 +120,7 @@ jobs:
       #       ${{ matrix.platform }}-stable-
       #       ${{ matrix.platform }}-
 
+      # TODO: Why are all monorepo dependencies being pulled just to run the CLI???
       - name: Generate Prisma client
         working-directory: core
         run: cargo run --locked -p prisma-cli --release -- generate
